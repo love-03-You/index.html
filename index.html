@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I'm Sorry Huzzu</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #ffb6c1; /* Light pink background */
+            overflow: hidden;
+            background-image: url('https://i.imgur.com/6Zz5FY3.png'); /* Tiny watermelon pattern */
+            background-size: 100px 100px; /* Adjust the size of small watermelons */
+        }
+        .message {
+            font-size: 22px;
+            font-weight: bold;
+            margin-top: 50px;
+            background: rgba(255, 255, 255, 0.8);
+            display: inline-block;
+            padding: 15px;
+            border-radius: 15px;
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        .btn {
+            padding: 15px 30px;
+            font-size: 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+            margin: 10px;
+        }
+        .yes-btn {
+            background-color: #28a745;
+            color: white;
+        }
+        .no-btn {
+            background-color: #dc3545;
+            color: white;
+            position: relative;
+        }
+        .falling-watermelon {
+            position: absolute;
+            top: -100px;
+            font-size: 40px;
+            animation: fall 2s linear forwards;
+        }
+        @keyframes fall {
+            from { transform: translateY(-100px); }
+            to { transform: translateY(100vh); }
+        }
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            50% { transform: translateX(10px); }
+            75% { transform: translateX(-10px); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="message">
+        <p>Maaf kr de yaar Huzzu ❤️</p>
+        <p>Tere si khub pyar krta mai, nai rah sakta mai tere bina 💕</p>
+        <p>Or tu ek message ke noko baat kr noko lagako rakhi hai 😢</p>
+        <p>I love you sooo much my wife 😘</p>
+        <p>Mai tujhe shod ko kabhi nai Jane wala! 💍</p>
+        <p><strong>Be mine forever and ever? 🥹</strong></p>
+    </div>
+
+    <div class="buttons">
+        <button class="btn yes-btn" onclick="acceptLove()">Yes 💖</button>
+        <button class="btn no-btn" onclick="declineLove()" id="noButton">No 😔</button>
+    </div>
+
+    <script>
+        let noClickCount = 0;
+
+        function acceptLove() {
+            for (let i = 0; i < 15; i++) {
+                let watermelon = document.createElement("div");
+                watermelon.innerHTML = "🍉";
+                watermelon.className = "falling-watermelon";
+                watermelon.style.left = Math.random() * window.innerWidth + "px";
+                document.body.appendChild(watermelon);
+            }
+        }
+
+        function declineLove() {
+            let noButton = document.getElementById("noButton");
+            noClickCount++;
+
+            if (noClickCount < 3) {
+                noButton.style.animation = "shake 0.5s";
+                setTimeout(() => {
+                    noButton.style.animation = "";
+                }, 500);
+            } else {
+                noButton.innerHTML = "Yes 💖";
+                noButton.className = "btn yes-btn";
+                noButton.onclick = acceptLove;
+            }
+        }
+    </script>
+
+</body>
+</html>
